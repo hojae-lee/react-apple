@@ -1,2 +1,5 @@
 ﻿blog/node_modules
 .vscode/settings.json
+blog/public
+node_modules/@ibsheet
+node_modules
