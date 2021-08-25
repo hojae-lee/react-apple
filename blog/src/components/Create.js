@@ -5,12 +5,17 @@ import loader from '@ibsheet/loader'
 const IBSheet8 = (props) => {
 	const sheetId = props.id, sheetEl = props.el, sheetOptions = props.options;
 
+	function success () {
+		// console.log(sheet);
+	}
+
 	useEffect(() => {
 		loader.createSheet({
 			id: sheetId,
 			el: sheetEl,
 			options: sheetOptions
 		})
+		.then(success())
 		return () => {
 			loader.removeSheet(sheetId);
 		}

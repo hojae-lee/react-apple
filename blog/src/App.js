@@ -6,6 +6,8 @@ import IBSheet8 from "./components/Create";
 const App = () => {
 
   let [data, dataState] = useState([{"sName": "흑흑"}]);
+  let [state, setState] = useState("noRender");
+
   const options = {
     Cfg: {
       SearchMode: 0
@@ -46,30 +48,43 @@ const App = () => {
         Type: 'Int',
         Name: 'Qty',
       }
-    ]
+    ],
+    Events: {
+      onRenderFirstFinish: function (evt) {
+        setState("Render");
+      }
+    }
   };
 
   useEffect(() => {
-    console.log("hi")
+    if (state === "Render") {
+      loadSearchData();
+    }
     // setTimeout(function () {
-    // loadSearchData();
-    // }, 1000)
-  }, data);
+    //   loadSearchData();
+    // });
+  }, [data]);
 
   const loadSearchData = () => {
-    sheetEventMapping();
+    // sheetEventMapping();
     sheet.loadSearchData(data);
   };
 
-  const sheetEventMapping = () => {
-    sheet.bind("onRenderFirstFinish", onRenderFirstFinish);
-  }
+  // const sheetEventMapping = () => {
+  //   sheet.bind("onFocus", onFocus);
+  // }
 
-  const onRenderFirstFinish = (evt) => {
-    console.log("onRenderFirstFinish");
-    // evt.sheet.isFinished = true;
-    // evt.sheet.loadSearchData(data);
-  };
+  // const onFocus = (evt) => {
+  //   console.log("onFocus");
+  // };
+
+  // const onRenderFirstFinish = (evt) => {
+  //   console.log("onRenderFirstFinish");
+  //   setState("Render");
+
+  //   evt.sheet.isFinished = true;
+  //   evt.sheet.loadSearchData(data);
+  // };
 
   // 대충 리로드...
   const reLoadData = () => {
