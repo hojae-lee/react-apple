@@ -52,39 +52,31 @@ const App = () => {
     Events: {
       onRenderFirstFinish: function (evt) {
         setState("Render");
+        evt.sheet.loadSearchData(data);
       }
     }
   };
 
   useEffect(() => {
-    if (state === "Render") {
       loadSearchData();
-    }
-    // setTimeout(function () {
-    //   loadSearchData();
-    // });
   }, [data]);
 
   const loadSearchData = () => {
+    // 시트객체가 만들어 졌으면 이벤트 매핑.
     // sheetEventMapping();
-    sheet.loadSearchData(data);
+    if (state === "Render") {
+      // 처음 조회시에는 안타도록.
+      sheet.loadSearchData(data);
+    }
   };
 
-  // const sheetEventMapping = () => {
-  //   sheet.bind("onFocus", onFocus);
-  // }
+  const sheetEventMapping = () => {
+    sheet.bind("onFocus", onFocus);
+  }
 
-  // const onFocus = (evt) => {
-  //   console.log("onFocus");
-  // };
-
-  // const onRenderFirstFinish = (evt) => {
-  //   console.log("onRenderFirstFinish");
-  //   setState("Render");
-
-  //   evt.sheet.isFinished = true;
-  //   evt.sheet.loadSearchData(data);
-  // };
+  const onFocus = (evt) => {
+    console.log("onFocus", evt);
+  };
 
   // 대충 리로드...
   const reLoadData = () => {
