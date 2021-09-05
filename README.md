@@ -1,6 +1,6 @@
 ## branch
 
-1. react-hooks  => ibsheet를 올린 뒤, react-hooks를 사용하여 데이터로드.
+1. react-hooks-ibsheet  => ibsheet를 올린 뒤, react-hooks를 사용하여 데이터로드.
 2. react-starter => react study
 
 ## React-Apple study
