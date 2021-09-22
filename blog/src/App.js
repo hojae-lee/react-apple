@@ -1,12 +1,16 @@
 /* eslint-disable */
 import React, { useState } from 'react';
-import logo from './logo.svg';
+import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
 
 // 리액트는 데이터 바인딩(서버에서 받아온 데이터를 html에 박아 표시해줌 ^^.)이 쉽기 때문에 쓰는거임. ex: { 변수명 }
 function App() {
   let posts = '강남 고기 맛집'
   let divStyle = { color: 'blue', fontSize: '30px' };
+
+  const test = useSelector(state => state);
+  // redux에서 컴포넌트에서 state 요청 수정요청하려면 dispatch 를 사용합니다.
+  const dispatch = useDispatch();
 
   function Func() {
     return 'Function';
@@ -38,13 +42,14 @@ function App() {
 
     <div className="App">
       <div className="black-nav">
-        <div style={ divStyle }>개발 Blog</div>
+        <div style={ divStyle }>{ test }</div>
       </div>
       {/* <h4>{ posts }</h4> */}
       {/* <h4>{ Func() }</h4> */}
       {/* <img src={ logo }></img> */}
 
-      <button onClick={ () => { changeTitle() } }>제목 변경</button>
+      <button onClick={ () => { dispatch({type: '증가'}) } }>제목 증가</button>
+      <button onClick={ () => { dispatch({type: '감소'}) } }>제목 감소</button>
       <div className="list">
         <h3>{ a[0] } <span onClick={ () => { cntFunc(cnt + 1) } }>👍</span> { cnt } </h3>
         <p>2월 17일 발행</p>
