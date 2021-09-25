@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
+import RHooks from './Hook';
 
 // 리액트는 데이터 바인딩(서버에서 받아온 데이터를 html에 박아 표시해줌 ^^.)이 쉽기 때문에 쓰는거임. ex: { 변수명 }
 function App() {
@@ -39,30 +40,33 @@ function App() {
   return (
     // 태그에 class를 주고 싶으면 className을 줘야함. JSX 문법
     // JSX에서 style 속성 집어 넣을 때 style = { object 자료형으로 만든 스타일 }, camelCase 작명관습에 따라 속성명을 바꿔주셈. 귀찮으니 className을 사용합시다..
+    <>
+      <div className="App">
+        <div className="black-nav">
+          <div style={ divStyle }>{ test }</div>
+        </div>
+        {/* <h4>{ posts }</h4> */}
+        {/* <h4>{ Func() }</h4> */}
+        {/* <img src={ logo }></img> */}
 
-    <div className="App">
-      <div className="black-nav">
-        <div style={ divStyle }>{ test }</div>
+        <button onClick={ () => { dispatch({type: '증가'}) } }>제목 증가</button>
+        <button onClick={ () => { dispatch({type: '감소'}) } }>제목 감소</button>
+        <div className="list">
+          <h3>{ a[0] } <span onClick={ () => { cntFunc(cnt + 1) } }>👍</span> { cnt } </h3>
+          <p>2월 17일 발행</p>
+        </div>
+        <div className="list">
+          <h3>{ a[1] }</h3>
+          <p>2월 18일 발행</p>
+        </div>
+        <div className="list">
+          <h3>{ a[2] }</h3>
+          <p>2월 19일 발행</p>
+        </div>
       </div>
-      {/* <h4>{ posts }</h4> */}
-      {/* <h4>{ Func() }</h4> */}
-      {/* <img src={ logo }></img> */}
-
-      <button onClick={ () => { dispatch({type: '증가'}) } }>제목 증가</button>
-      <button onClick={ () => { dispatch({type: '감소'}) } }>제목 감소</button>
-      <div className="list">
-        <h3>{ a[0] } <span onClick={ () => { cntFunc(cnt + 1) } }>👍</span> { cnt } </h3>
-        <p>2월 17일 발행</p>
-      </div>
-      <div className="list">
-        <h3>{ a[1] }</h3>
-        <p>2월 18일 발행</p>
-      </div>
-      <div className="list">
-        <h3>{ a[2] }</h3>
-        <p>2월 19일 발행</p>
-      </div>
-    </div>
+      <hr/>
+      <RHooks />
+    </>
   );
 }
 
