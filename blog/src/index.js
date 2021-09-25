@@ -1,28 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import './index.css';
 import App from './App';
-import IBSheetLoader from '@ibsheet/loader';
 import reportWebVitals from './reportWebVitals';
 
-IBSheetLoader.config({
-  registry: [
-      {
-        name: 'ibsheet',
-        baseUrl: './lib/ibsheet', // ibsheet.js 파일 위치
-        locales: ["en","ko"], // locale 파일 (설정이 없으면 /locale/ko.js 파일 사용)
-        plugins: [  // plugin 파일
-            "dialog",
-            "common",
-            "excel",
-        ]
-      }
-  ]
-})
+const test = 100;
+
+// reducer 라고 부름
+function reducer(state = test, action) {
+  if (action.type === '증가') {
+    state++;
+  } else if (action.type === '감소') {
+    state--;
+  }
+  return state;
+}
+
+let store = createStore(reducer);
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={ store }>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
