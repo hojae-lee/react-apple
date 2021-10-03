@@ -2,6 +2,8 @@
 
 1. react-hooks-ibsheet  => ibsheet를 올린 뒤, react-hooks를 사용하여 데이터로드.
 2. react-starter => react study
+3. react-router => 리액트 라우터 스터디
+4. react-redux => 리액트 라우터 + 리덕스 관련하여 상태관리
 
 ## React-Apple study
 
