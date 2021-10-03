@@ -3,22 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import './index.css';
+import rootReducer from './reducer'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const test = 100;
-
-// reducer 라고 부름
-function reducer(state = test, action) {
-  if (action.type === '증가') {
-    state++;
-  } else if (action.type === '감소') {
-    state--;
-  }
-  return state;
-}
-
-let store = createStore(reducer);
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>

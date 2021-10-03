@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { CreateSample } from '../reducer';
+import Contents from './contents';
 
 const Sample2 = () => {
+  const dispatch = useDispatch();
+  const name = 'Sample2';
+  const desc = '두번째 샘플 페이지입니다.';
+
+  useEffect(() => {
+    dispatch(CreateSample(name, desc));
+  }, []);
+
   return (
-    <div>
-      <h1>Sample2</h1>
-      <p>2번째 샘플페이지입니다.</p>
-    </div>
+    <Contents />
   );
 };
 

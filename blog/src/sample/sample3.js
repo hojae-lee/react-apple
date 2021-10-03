@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { CreateSample } from '../reducer';
+import Contents from './contents';
 
-const Sample2 = () => {
+const Sample3 = () => {
+  const dispatch = useDispatch();
+  const name = 'Sample3';
+  const desc = '세번째 샘플 페이지입니다.';
+
+  useEffect(() => {
+    dispatch(CreateSample(name, desc));
+  }, []);
+
   return (
-    <div>
-      <h1>Sample3</h1>
-      <p>3번째 샘플페이지입니다.</p>
-    </div>
+    <Contents />
   );
 };
 
-export default Sample2;
+export default Sample3;
